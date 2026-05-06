@@ -6,65 +6,68 @@ const bot = new TelegramBot(token, { polling: true })
 console.log("Bot is running...")
 const cars = [
 
-    // AUDI
-    { id: "audi_a6", name: "Audi A6 C7 3.0 TDI", fuel: "дизель", power: 272, consumption: 6.5, maxSpeed: 280 },
-    { id: "audi_a4", name: "Audi A4 B9 2.0 TFSI", fuel: "бензин", power: 190, consumption: 7.0, maxSpeed: 250 },
-    { id: "audi_q7", name: "Audi Q7 3.0 TDI", fuel: "дизель", power: 286, consumption: 7.5, maxSpeed: 250 },
-    { id: "audi_a8", name: "Audi A8 D4 4.2 TDI", fuel: "дизель", power: 385, consumption: 8.0, maxSpeed: 305 },
+// AUDI
+{ id: "audi_a6", name: "Audi A6 C7 3.0 TDI", fuel: "дизель", power: 272, consumption: 6.5, maxSpeed: 250, zeroToHundred: 5.2 },
+{ id: "audi_a4", name: "Audi A4 B9 2.0 TFSI", fuel: "бензин", power: 190, consumption: 7.0, maxSpeed: 240, zeroToHundred: 7.1 },
+{ id: "audi_q7", name: "Audi Q7 3.0 TDI", fuel: "дизель", power: 286, consumption: 7.5, maxSpeed: 245, zeroToHundred: 6.3 },
+{ id: "audi_a8", name: "Audi A8 D4 4.2 TDI", fuel: "дизель", power: 385, consumption: 8.0, maxSpeed: 250, zeroToHundred: 4.7 },
 
-    // BMW
-    { id: "bmw_530d", name: "BMW 530d G30", fuel: "дизель", power: 265, consumption: 6.0, maxSpeed: 275 },
-    { id: "bmw_330i", name: "BMW 330i G20", fuel: "бензин", power: 258, consumption: 7.2, maxSpeed: 260 },
-    { id: "bmw_x5", name: "BMW X5 30d G05", fuel: "дизель", power: 286, consumption: 7.0, maxSpeed: 245 },
-    { id: "bmw_m5", name: "BMW M5 F90 Competition", fuel: "бензин", power: 625, consumption: 11.5, maxSpeed: 330 },
+// BMW
+{ id: "bmw_530d", name: "BMW 530d G30", fuel: "дизель", power: 265, consumption: 6.0, maxSpeed: 250, zeroToHundred: 5.4 },
+{ id: "bmw_330i", name: "BMW 330i G20", fuel: "бензин", power: 258, consumption: 7.2, maxSpeed: 250, zeroToHundred: 5.8 },
+{ id: "bmw_x5", name: "BMW X5 30d G05", fuel: "дизель", power: 286, consumption: 7.0, maxSpeed: 230, zeroToHundred: 6.1 },
+{ id: "bmw_m5", name: "BMW M5 F90 Competition", fuel: "бензин", power: 625, consumption: 11.5, maxSpeed: 305, zeroToHundred: 3.3 },
 
-    // MERCEDES
-    { id: "mercedes_e220", name: "Mercedes E220d W213", fuel: "дизель", power: 194, consumption: 5.3, maxSpeed: 250 },
-    { id: "mercedes_c300", name: "Mercedes C300 W205", fuel: "бензин", power: 258, consumption: 7.4, maxSpeed: 260 },
-    { id: "mercedes_s350", name: "Mercedes S350d W222", fuel: "дизель", power: 286, consumption: 6.4, maxSpeed: 255 },
-    { id: "mercedes_amg", name: "Mercedes C63 AMG", fuel: "бензин", power: 510, consumption: 12.0, maxSpeed: 290 },
+// MERCEDES
+{ id: "mercedes_e220", name: "Mercedes E220d W213", fuel: "дизель", power: 194, consumption: 5.3, maxSpeed: 240, zeroToHundred: 7.3 },
+{ id: "mercedes_c300", name: "Mercedes C300 W205", fuel: "бензин", power: 258, consumption: 7.4, maxSpeed: 250, zeroToHundred: 5.9 },
+{ id: "mercedes_s350", name: "Mercedes S350d W222", fuel: "дизель", power: 286, consumption: 6.4, maxSpeed: 250, zeroToHundred: 6.0 },
+{ id: "mercedes_amg", name: "Mercedes C63 AMG", fuel: "бензин", power: 510, consumption: 12.0, maxSpeed: 290, zeroToHundred: 4.0 },
 
-    // VOLKSWAGEN
-    { id: "vw_tiguan", name: "Volkswagen Tiguan 2.0 TDI", fuel: "дизель", power: 150, consumption: 5.8, maxSpeed: 215 },
-    { id: "vw_golf", name: "Volkswagen Golf GTI 2.0 TSI", fuel: "бензин", power: 245, consumption: 7.5, maxSpeed: 267 },
-    { id: "vw_passat", name: "Volkswagen Passat B8 2.0 TDI", fuel: "дизель", power: 190, consumption: 5.0, maxSpeed: 240 },
-    { id: "vw_jetta_14", name: "Volkswagen Jetta 1.4 TSI", fuel: "бензин", power: 150, consumption: 6.2, maxSpeed: 210 },
-    { id: "vw_jetta_20", name: "Volkswagen Jetta GLI 2.0 TSI", fuel: "бензин", power: 230, consumption: 7.1, maxSpeed: 250 },
-    { id: "vw_jetta_diesel", name: "Volkswagen Jetta 2.0 TDI", fuel: "дизель", power: 150, consumption: 5.1, maxSpeed: 220 },
+// VOLKSWAGEN
+{ id: "vw_tiguan", name: "Volkswagen Tiguan 2.0 TDI", fuel: "дизель", power: 150, consumption: 5.8, maxSpeed: 205, zeroToHundred: 9.3 },
+{ id: "vw_golf", name: "Volkswagen Golf GTI 2.0 TSI", fuel: "бензин", power: 245, consumption: 7.5, maxSpeed: 250, zeroToHundred: 6.2 },
+{ id: "vw_passat", name: "Volkswagen Passat B8 2.0 TDI", fuel: "дизель", power: 190, consumption: 5.0, maxSpeed: 238, zeroToHundred: 7.7 },
+{ id: "vw_jetta_14", name: "Volkswagen Jetta 1.4 TSI", fuel: "бензин", power: 150, consumption: 6.2, maxSpeed: 210, zeroToHundred: 8.5 },
+{ id: "vw_jetta_20", name: "Volkswagen Jetta GLI 2.0 TSI", fuel: "бензин", power: 230, consumption: 7.1, maxSpeed: 249, zeroToHundred: 6.1 },
+{ id: "vw_jetta_diesel", name: "Volkswagen Jetta 2.0 TDI", fuel: "дизель", power: 150, consumption: 5.1, maxSpeed: 220, zeroToHundred: 8.8 },
 
-    // TOYOTA
-    { id: "toyota_camry", name: "Toyota Camry 3.5", fuel: "бензин", power: 301, consumption: 9.5, maxSpeed: 240 },
-    { id: "toyota_corolla", name: "Toyota Corolla 2.0 Hybrid", fuel: "гібрид", power: 184, consumption: 4.5, maxSpeed: 210 },
-    { id: "toyota_land", name: "Toyota Land Cruiser 300", fuel: "дизель", power: 299, consumption: 8.9, maxSpeed: 240 },
+// TOYOTA
+{ id: "toyota_camry", name: "Toyota Camry 3.5", fuel: "бензин", power: 301, consumption: 9.5, maxSpeed: 240, zeroToHundred: 5.8 },
+{ id: "toyota_corolla", name: "Toyota Corolla 2.0 Hybrid", fuel: "гібрид", power: 184, consumption: 4.5, maxSpeed: 180, zeroToHundred: 7.9 },
+{ id: "toyota_land", name: "Toyota Land Cruiser 300", fuel: "дизель", power: 299, consumption: 8.9, maxSpeed: 210, zeroToHundred: 6.8 },
 
-    // LEXUS
-    { id: "lexus_rx350", name: "Lexus RX350", fuel: "бензин", power: 300, consumption: 9.0, maxSpeed: 220 },
-    { id: "lexus_ls500", name: "Lexus LS500", fuel: "бензин", power: 421, consumption: 10.5, maxSpeed: 250 },
-    { id: "lexus_gx", name: "Lexus GX460", fuel: "бензин", power: 301, consumption: 12.0, maxSpeed: 200 },
+// LEXUS
+{ id: "lexus_rx350", name: "Lexus RX350", fuel: "бензин", power: 300, consumption: 9.0, maxSpeed: 210, zeroToHundred: 7.1 },
+{ id: "lexus_ls500", name: "Lexus LS500", fuel: "бензин", power: 421, consumption: 10.5, maxSpeed: 250, zeroToHundred: 4.9 },
+{ id: "lexus_gx", name: "Lexus GX460", fuel: "бензин", power: 301, consumption: 12.0, maxSpeed: 175, zeroToHundred: 8.3 },
 
-    // RENAULT
-    { id: "renault_megane", name: "Renault Megane RS", fuel: "бензин", power: 300, consumption: 7.8, maxSpeed: 260 },
-    { id: "renault_duster", name: "Renault Duster 1.5 dCi", fuel: "дизель", power: 115, consumption: 5.0, maxSpeed: 180 },
-    { id: "renault_talisman", name: "Renault Talisman 2.0 Blue dCi", fuel: "дизель", power: 200, consumption: 5.7, maxSpeed: 240 },
+// RENAULT
+{ id: "renault_megane", name: "Renault Megane RS", fuel: "бензин", power: 300, consumption: 7.8, maxSpeed: 255, zeroToHundred: 5.7 },
+{ id: "renault_duster", name: "Renault Duster 1.5 dCi", fuel: "дизель", power: 115, consumption: 5.0, maxSpeed: 175, zeroToHundred: 11.8 },
+{ id: "renault_talisman", name: "Renault Talisman 2.0 Blue dCi", fuel: "дизель", power: 200, consumption: 5.7, maxSpeed: 237, zeroToHundred: 7.9 },
 
-    // SKODA
-    { id: "skoda_octavia", name: "Skoda Octavia RS 2.0 TSI", fuel: "бензин", power: 245, consumption: 6.8, maxSpeed: 250 },
-    { id: "skoda_superb", name: "Skoda Superb 2.0 TDI", fuel: "дизель", power: 200, consumption: 5.5, maxSpeed: 245 },
+// SKODA
+{ id: "skoda_octavia", name: "Skoda Octavia RS 2.0 TSI", fuel: "бензин", power: 245, consumption: 6.8, maxSpeed: 250, zeroToHundred: 6.7 },
+{ id: "skoda_superb", name: "Skoda Superb 2.0 TDI", fuel: "дизель", power: 200, consumption: 5.5, maxSpeed: 240, zeroToHundred: 7.5 },
 
-    // PORSCHE
-    { id: "porsche_cayenne", name: "Porsche Cayenne Turbo", fuel: "бензин", power: 550, consumption: 11.0, maxSpeed: 286 },
-    { id: "porsche_panamera", name: "Porsche Panamera 4S", fuel: "бензин", power: 440, consumption: 9.0, maxSpeed: 289 },
+// PORSCHE
+{ id: "porsche_cayenne", name: "Porsche Cayenne Turbo", fuel: "бензин", power: 550, consumption: 11.0, maxSpeed: 286, zeroToHundred: 3.9 },
+{ id: "porsche_panamera", name: "Porsche Panamera 4S", fuel: "бензин", power: 440, consumption: 9.0, maxSpeed: 289, zeroToHundred: 4.2 },
 
-    // DODGE
-    { id: "dodge_challenger_36", name: "Dodge Challenger 3.6 Pentastar", fuel: "бензин", power: 305, consumption: 10.5, maxSpeed: 240 },
-    { id: "dodge_charger_36", name: "Dodge Charger 3.6 Pentastar", fuel: "бензин", power: 300, consumption: 10.2, maxSpeed: 240 },
-    { id: "dodge_challenger_57", name: "Dodge Challenger 5.7 HEMI", fuel: "бензин", power: 375, consumption: 13.0, maxSpeed: 275 },
-    { id: "dodge_charger_57", name: "Dodge Charger 5.7 HEMI", fuel: "бензин", power: 370, consumption: 12.5, maxSpeed: 270 },
-    { id: "dodge_challenger_62", name: "Dodge Challenger 6.2 Hellcat", fuel: "бензин", power: 717, consumption: 15.0, maxSpeed: 327 },
-    { id: "dodge_charger_62", name: "Dodge Charger 6.2 Hellcat", fuel: "бензин", power: 717, consumption: 15.5, maxSpeed: 325 },
-    { id: "dodge_charger_64", name: "Dodge Charger 6.4 Scat Pack", fuel: "бензин", power: 492, consumption: 13.8, maxSpeed: 300 },
-    { id: "dodge_challenger_64", name: "Dodge Challenger 6.4 Scat Pack", fuel: "бензин", power: 492, consumption: 13.9, maxSpeed: 300 },
+// DODGE
+{ id: "dodge_challenger_36", name: "Dodge Challenger 3.6 Pentastar", fuel: "бензин", power: 305, consumption: 10.5, maxSpeed: 240, zeroToHundred: 6.3 },
+{ id: "dodge_charger_36", name: "Dodge Charger 3.6 Pentastar", fuel: "бензин", power: 300, consumption: 10.2, maxSpeed: 240, zeroToHundred: 6.2 },
+{ id: "dodge_challenger_57", name: "Dodge Challenger 5.7 HEMI", fuel: "бензин", power: 375, consumption: 13.0, maxSpeed: 275, zeroToHundred: 5.0 },
+{ id: "dodge_charger_57", name: "Dodge Charger 5.7 HEMI", fuel: "бензин", power: 370, consumption: 12.5, maxSpeed: 270, zeroToHundred: 5.1 },
+{ id: "dodge_challenger_62", name: "Dodge Challenger 6.2 Hellcat", fuel: "бензин", power: 717, consumption: 15.0, maxSpeed: 327, zeroToHundred: 3.7 },
+{ id: "dodge_charger_62", name: "Dodge Charger 6.2 Hellcat", fuel: "бензин", power: 717, consumption: 15.5, maxSpeed: 325, zeroToHundred: 3.6 },
+{ id: "dodge_charger_64", name: "Dodge Charger 6.4 Scat Pack", fuel: "бензин", power: 492, consumption: 13.8, maxSpeed: 300, zeroToHundred: 4.3 },
+{ id: "dodge_challenger_64", name: "Dodge Challenger 6.4 Scat Pack", fuel: "бензин", power: 492, consumption: 13.9, maxSpeed: 300, zeroToHundred: 4.4 },
 ]
+
+
+
 let userSelections = {}
 function findCarById(id) {
     return cars.find((car) => {
