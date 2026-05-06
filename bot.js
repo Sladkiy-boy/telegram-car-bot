@@ -284,7 +284,7 @@ bot.on("callback_query", (query) => {
 💪 ${secondCar.power} к.с.
 📉 ${secondCar.consumption} л/100 км
 🚀 ${secondCar.maxSpeed} км/год
-⚡ 0-100: ${firstCar.zeroToHundred} c
+⚡ 0-100: ${secondCar.zeroToHundred} c
 
 🏆 Потужніше: ${powerfulCar.name}
 🚀 Швидше по максималці: ${fasterCar.name}
