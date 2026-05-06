@@ -113,7 +113,8 @@ function getCarInfo(car) {
 ⛽ Паливо: ${car.fuel}
 💪 Потужність: ${car.power} к.с.
 📉 Розхід: ${car.consumption} л/100 км
-🚀 Максималка: ${car.maxSpeed} км/год`
+🚀 Максималка: ${car.maxSpeed} км/год
+⚡ 0-100: ${car.zeroToHundred} c`
 }
 bot.onText(/\/start/, (msg) => {
     bot.sendMessage(
